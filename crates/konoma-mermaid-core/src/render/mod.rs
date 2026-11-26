@@ -45,9 +45,7 @@
 //! second renderer left to ask: a diagram one of them *refuses* degrades to the Unicode text
 //! diagram, so a failure here is visible rather than papered over.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this module's surface that
-// exist for the tests and for the stages still to come look unreachable to rustc. Same reasoning,
-// and the same lint, as the sibling `flowchart` and `layout` modules.
+// Items of this module that only the tests use are allowed to go unreported as dead code.
 #![allow(dead_code)]
 
 pub mod architecture;

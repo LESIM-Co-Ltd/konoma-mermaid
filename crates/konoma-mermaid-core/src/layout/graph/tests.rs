@@ -1,8 +1,8 @@
 // Vendored from the `dagre` crate v0.1.1 (https://github.com/kookyleo/dagre-rs).
 // Copyright (c) kookyleo <kookyleo@gmail.com>. Licensed under the Apache License,
-// Version 2.0 -- full text in `src/preview/mermaid/layout/LICENSE-APACHE`.
+// Version 2.0 -- full text in `src/layout/LICENSE-APACHE`.
 // Modified by the konoma authors; every change is listed in
-// `src/preview/mermaid/layout/PROVENANCE.md`.
+// `src/layout/PROVENANCE.md`.
 
 //! Tests ported from graphlib.js graph-test.ts (170+ tests) and alg/ tests (57+ tests)
 

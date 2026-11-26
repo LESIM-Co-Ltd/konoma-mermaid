@@ -1,8 +1,8 @@
 // Vendored from the `dagre` crate v0.1.1 (https://github.com/kookyleo/dagre-rs).
 // Copyright (c) kookyleo <kookyleo@gmail.com>. Licensed under the Apache License,
-// Version 2.0 -- full text in `src/preview/mermaid/layout/LICENSE-APACHE`.
+// Version 2.0 -- full text in `src/layout/LICENSE-APACHE`.
 // Modified by the konoma authors; every change is listed in
-// `src/preview/mermaid/layout/PROVENANCE.md`.
+// `src/layout/PROVENANCE.md`.
 
 //! Sugiyama-style hierarchical graph layout, vendored from the `dagre` crate.
 //!
@@ -10,9 +10,8 @@
 //!
 //! konoma's own mermaid renderer needs a layout engine it can *fix*. A crates.io
 //! dependency cannot be patched in a published crate (`[patch.crates-io]` is stripped
-//! by `cargo publish`, which is why `vendor/mermaid-text` only works for local
-//! development), so the source is carried here and ships inside the konoma crate.
-//! See `docs/FEATURE-MERMAID-RENDERER.md` §0-3 for the decision record.
+//! by `cargo publish`), so the source is carried here and ships inside the
+//! `konoma-mermaid-core` crate.
 //!
 //! # Why it is not rewritten
 //!
@@ -29,16 +28,15 @@
 //! Copyright (c) kookyleo <kookyleo@gmail.com>, licensed under the Apache License,
 //! Version 2.0. The full license text is in `LICENSE-APACHE` next to this file; the
 //! modifications konoma made are listed in `PROVENANCE.md`. konoma itself is MIT —
-//! this subtree stays Apache-2.0.
+//! this subtree stays Apache-2.0. `dagre` is in turn a port of dagre.js and graphlib
+//! (MIT); their notices are in `THIRD-PARTY-NOTICES.md` at the crate root.
 
 // This subtree is deliberately *not* brought in line with konoma's own style: every
 // edit costs us a piece of the dagre.js cross-validation guarantee above. The lints
 // below are therefore allowed for the whole vendored subtree rather than fixed.
 //
-// * `dead_code`, `unused_imports` — konoma is a binary crate, so `pub` does not mark
-//   an item (or a `pub use` re-export) as used. Stage 1a only lands the engine; the
-//   mermaid renderer that calls it arrives in stage 1, and until then upstream's
-//   public API looks unreachable to rustc.
+// * `dead_code`, `unused_imports` — the mermaid renderer uses only part of upstream's
+//   public API; the unused rest is kept rather than cut.
 // * `clippy::collapsible_if` — upstream is edition 2024 and uses let-chains
 //   (`if let Some(a) = x && let Some(b) = y`). konoma is edition 2021, where those do
 //   not parse, so each chain was mechanically nested. Collapsing them back is exactly
@@ -47,7 +45,7 @@
 //   style that a newer clippy flags. Upstream is archived and will not fix it, and
 //   touching it here buys nothing.
 // * `clippy::module_inception` — upstream's crate root has `graph` and `layout`
-//   modules. Vendoring the crate under `mermaid::layout` therefore produces
+//   modules. Vendoring the crate under `crate::layout` therefore produces
 //   `layout::layout`. Keeping upstream's file paths is what makes a diff against a
 //   future dagre release readable, so the nesting stays.
 #![allow(

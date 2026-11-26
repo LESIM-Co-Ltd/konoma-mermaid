@@ -38,9 +38,7 @@
 //! because a line the grammar has a rule for that the parser has no rule for becomes a phantom
 //! element (§2-3: 描画不要 ≠ パース不要). [`super::chart::tests`] pins the drop.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this module's surface
-// that exist for the tests look unreachable to rustc. Same reasoning, and the same lint, as the
-// sibling parsers.
+// Items of this module that only the tests use are allowed to go unreported as dead code.
 #![allow(dead_code)]
 
 pub mod packet;

@@ -32,8 +32,8 @@
 //! the nodes and edges are. **Everything below layout is shared**: the same `Diagram`, the same
 //! `Glyph`, the same `Tip`, the same `svg::emit`, the same palettes.
 
-// konoma is a binary crate, so `pub` marks nothing as used. Same reasoning, and the same pair of
-// lints, as the sibling parsers.
+// Items and re-exports of this module that only the tests use are allowed to go unreported as
+// dead code or unused imports.
 #![allow(dead_code, unused_imports)]
 
 pub mod model;

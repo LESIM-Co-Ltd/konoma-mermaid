@@ -88,7 +88,11 @@ macOS and Ubuntu.
 
 ## License
 
-[MIT](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/LICENSE), except `src/layout/`: a
-modified copy of the `dagre` crate 0.1.1, copyright kookyleo, under
-[Apache-2.0](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/crates/konoma-mermaid-core/src/layout/LICENSE-APACHE)
-([changes](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/crates/konoma-mermaid-core/src/layout/PROVENANCE.md)).
+`MIT AND Apache-2.0 AND ISC`:
+
+- [MIT](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/LICENSE) for the code written for this crate.
+- `src/layout/` is a modified copy of the `dagre` crate 0.1.1, copyright kookyleo, under
+  [Apache-2.0](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/crates/konoma-mermaid-core/src/layout/LICENSE-APACHE)
+  ([changes](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/crates/konoma-mermaid-core/src/layout/PROVENANCE.md)).
+- Parts are ported from dagre.js, graphlib, dagre-d3-es and mermaid (MIT) and d3-shape (ISC). See
+  the [third-party notices](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/crates/konoma-mermaid-core/THIRD-PARTY-NOTICES.md).
