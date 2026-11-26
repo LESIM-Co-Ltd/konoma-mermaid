@@ -33,10 +33,8 @@
 //! `%%` comments, `%%{init}%%`, front matter, `accTitle`, `accDescr` in both forms, and edge
 //! metadata — is recognised.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this model that only the
-// tests and the stages still to come read look unreachable to rustc, even though [`parse`] and
-// [`is_flowchart`] are both on the drawing path as of stage 1e. Same reasoning, and same pair of
-// lints, as the vendored `layout` subtree.
+// Items and re-exports of this module that only the tests use are allowed to go unreported as
+// dead code or unused imports.
 #![allow(dead_code, unused_imports)]
 
 pub mod model;

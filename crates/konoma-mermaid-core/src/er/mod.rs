@@ -39,8 +39,8 @@
 //!   a diagram label (§4-4 says the same about `<b>` in a flowchart), so the text is drawn as
 //!   written.
 
-// konoma is a binary crate, so `pub` marks nothing as used. Same reasoning, and the same pair of
-// lints, as the sibling parsers.
+// Items and re-exports of this module that only the tests use are allowed to go unreported as
+// dead code or unused imports.
 #![allow(dead_code, unused_imports)]
 
 pub mod model;

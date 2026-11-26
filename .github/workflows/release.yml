@@ -49,5 +49,5 @@ jobs:
           features: app
           archive: $bin-$target
           tar: unix
-          include: README.md,LICENSE
+          include: README.md,LICENSE,THIRD-PARTY-LICENSES.md
           token: ${{ secrets.GITHUB_TOKEN }}

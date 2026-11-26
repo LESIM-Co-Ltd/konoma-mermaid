@@ -25,9 +25,7 @@
 //! grammar does. Being more permissive cannot lose a diagram; it can accept one mermaid refuses,
 //! and that is the trade recorded here rather than left for a reader to discover.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this module's surface
-// that exist for the tests and for the renderer look unreachable to rustc until every caller is
-// wired. Same reasoning, and the same lint, as the sibling parsers.
+// Items of this module that only the tests use are allowed to go unreported as dead code.
 #![allow(dead_code)]
 
 use crate::chart::Envelope;

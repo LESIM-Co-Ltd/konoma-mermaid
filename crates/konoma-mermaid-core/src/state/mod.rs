@@ -35,10 +35,8 @@
 //! did not recognise them would turn `classDef hot fill:#f9f` into a box (§2-3). None of them is
 //! drawn. Neither is a `direction` written inside a block; see [`parser`] for why.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this model that only
-// the tests and the stages still to come read look unreachable to rustc even though [`parse`]
-// and [`is_state_diagram`] are both on the drawing path. Same reasoning, and the same pair of
-// lints, as the sibling `flowchart` module.
+// Items and re-exports of this module that only the tests use are allowed to go unreported as
+// dead code or unused imports.
 #![allow(dead_code, unused_imports)]
 
 pub mod model;

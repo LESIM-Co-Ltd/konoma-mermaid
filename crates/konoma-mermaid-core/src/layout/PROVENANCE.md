@@ -11,6 +11,8 @@ repository sha1 `ad891113d80f5d0305962a0e45e88715e15873f4`; the repository is ar
 - **Upstream released no `NOTICE` file.** The published `dagre-0.1.1.crate` archive
   and the repository both contain only `LICENSE` (checked 2026-08-26), so there is no
   `NOTICE` content to carry forward under Apache-2.0 §4(d).
+- **`dagre` is a port of dagre.js and graphlib** (MIT). Their copyright notices and
+  license texts are in `THIRD-PARTY-NOTICES.md` at the root of this crate.
 
 `dagre` is itself a port of `@dagrejs/dagre` **3.0.1-pre**, commit
 `4713b59bfa05af56cf58aa01e2027adf5d2dcf88` (recorded in upstream's
@@ -26,7 +28,8 @@ what those changes are.
 
 ### 1. Where the files went
 
-The crate was flattened into a konoma module. Paths are otherwise preserved so that a
+The crate was flattened into the `layout` module of `konoma-mermaid-core` (`src/layout/`).
+Paths are otherwise preserved so that a
 diff against a future `dagre` release stays readable.
 
 | upstream | here |
@@ -42,7 +45,7 @@ diff against a future `dagre` release stays readable.
 ### 2. Module paths
 
 `crate::` was rewritten to `crate::layout::` throughout (91
-occurrences). `crate::` now means the konoma binary, not the `dagre` library.
+occurrences). `crate::` now means the `konoma-mermaid-core` library, not the `dagre` library.
 
 ### 3. Let-chains desugared (edition 2024 → edition 2021)
 
@@ -117,9 +120,9 @@ diagram konoma renders under the default `mermaid_routing = "splines"`.
 
 - **`src/graph/json.rs` (127 lines)** and its `pub mod json;` declaration. It
   (de)serialises a `Graph` through serde and is unreachable from the layout pipeline.
-  Keeping it would have forced `serde_json` to become a *runtime* dependency of konoma
-  for a feature konoma never calls; as a dev-dependency it is limited to the
-  cross-validation test.
+  Keeping it would have forced `serde_json` to become a *runtime* dependency of
+  `konoma-mermaid-core` for a feature konoma never calls; as a dev-dependency it is limited
+  to the cross-validation test.
 - **The shortest-path / spanning-tree half of `src/graph/alg.rs`** (upstream lines
   232-686): `PathEntry`, `dijkstra`, `dijkstra_with_edge_fn`, `dijkstra_all`,
   `bellman_ford`, `floyd_warshall`, `ExtractedPath`/`extract_path`, `reduce`/
@@ -137,8 +140,7 @@ diagram konoma renders under the default `mermaid_routing = "splines"`.
 ### 7. `cross_validate.rs`
 
 - `use dagre::…` became `use super::…`; the file is now `#[cfg(test)] mod
-  cross_validate;` rather than an integration test, because konoma is a binary crate
-  and `tests/` cannot reach into it.
+  cross_validate;` rather than an integration test.
 - `include_str!("../cross-validate/…")` became `include_str!("cross-validate/…")`.
 - One let-chain desugared (see §3).
 - **A stale comment was corrected.** Upstream's line 473 read *"For now, don't assert —
@@ -162,13 +164,13 @@ means `SETUP.md` still describes upstream's repository layout. Read it with this
 
 | `SETUP.md` says | in konoma |
 |---|---|
-| `tests/cross_validate.rs` | `src/preview/mermaid/layout/cross_validate.rs` |
-| `cross-validate/…` (from the repo root) | `src/preview/mermaid/layout/cross-validate/…` |
+| `tests/cross_validate.rs` | `src/layout/cross_validate.rs` |
+| `cross-validate/…` (from the repo root) | `src/layout/cross-validate/…` |
 | `ref/dagre-js/` (clone target) | anywhere; it is not tracked here either |
 | `Cargo.toml` → `[package.metadata.upstream]` | this file's header |
 | `README.md` → "Compatibility" | this file's header |
 
-`node generate_reference.mjs` must be run with `src/preview/mermaid/layout/` as the
+`node generate_reference.mjs` must be run with `src/layout/` as the
 working directory, since the script resolves `cross-validate/` and `ref/` relative to it.
 
 ## Diffing against a future `dagre` release

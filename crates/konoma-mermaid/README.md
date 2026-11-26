@@ -99,5 +99,7 @@ gives the text rendering (through [`mermaid-text`](https://crates.io/crates/merm
 source under a note for what it cannot draw. The default feature `app` builds the program; depend
 with `default-features = false` to leave it out.
 
-License: [MIT](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/LICENSE); the renderer
-includes an [Apache-2.0 part](https://crates.io/crates/konoma-mermaid-core).
+License: [MIT](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/LICENSE) for this crate. The renderer,
+[`konoma-mermaid-core`](https://crates.io/crates/konoma-mermaid-core), is
+`MIT AND Apache-2.0 AND ISC`. The release archives include a list of third-party notices
+([THIRD-PARTY-LICENSES.md](https://github.com/LESIM-Co-Ltd/konoma-mermaid/blob/main/THIRD-PARTY-LICENSES.md)).

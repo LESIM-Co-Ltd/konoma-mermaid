@@ -45,9 +45,8 @@
 //!   konoma draws the ring on the line between two ordinary classes instead, which says the same
 //!   thing without a box nobody can see.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this model that only the
-// tests read look unreachable to rustc even though [`parse`] and [`is_class_diagram`] are both on
-// the drawing path. Same reasoning, and the same pair of lints, as the sibling parsers.
+// Items and re-exports of this module that only the tests use are allowed to go unreported as
+// dead code or unused imports.
 #![allow(dead_code, unused_imports)]
 
 pub mod model;

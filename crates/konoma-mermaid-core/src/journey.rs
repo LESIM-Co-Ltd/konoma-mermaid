@@ -25,9 +25,7 @@
 //!    konoma reproduces that rather than "fixing" it, because the alternative is a picture that
 //!    disagrees with every other renderer.
 
-// konoma is a binary crate, so `pub` marks nothing as used: the parts of this module's surface
-// that exist for the tests and for the renderer look unreachable to rustc until every caller is
-// wired. Same reasoning, and the same lint, as the sibling parsers.
+// Items of this module that only the tests use are allowed to go unreported as dead code.
 #![allow(dead_code)]
 
 use crate::chart::{find_header, first_word, Envelope, ParseError, Preamble, Source, TitleSyntax};

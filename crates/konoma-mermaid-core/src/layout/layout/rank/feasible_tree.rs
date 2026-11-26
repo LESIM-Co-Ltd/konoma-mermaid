@@ -1,8 +1,8 @@
 // Vendored from the `dagre` crate v0.1.1 (https://github.com/kookyleo/dagre-rs).
 // Copyright (c) kookyleo <kookyleo@gmail.com>. Licensed under the Apache License,
-// Version 2.0 -- full text in `src/preview/mermaid/layout/LICENSE-APACHE`.
+// Version 2.0 -- full text in `src/layout/LICENSE-APACHE`.
 // Modified by the konoma authors; every change is listed in
-// `src/preview/mermaid/layout/PROVENANCE.md`.
+// `src/layout/PROVENANCE.md`.
 
 //! Constructs a spanning tree with tight edges and adjusts the input node's
 //! ranks to achieve this. A tight edge is one that has a length that matches

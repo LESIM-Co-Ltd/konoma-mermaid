@@ -3,7 +3,8 @@ name = "konoma-mermaid-core"
 version = "0.1.0"
 edition.workspace = true
 rust-version.workspace = true
-license.workspace = true
+# MIT, plus the Apache-2.0 `src/layout/` and the ISC code ported from d3-shape (THIRD-PARTY-NOTICES.md).
+license = "MIT AND Apache-2.0 AND ISC"
 repository.workspace = true
 description = "konoma's own mermaid renderer: parsers for every diagram kind, a vendored dagre layout engine, and the SVG writer"
 
